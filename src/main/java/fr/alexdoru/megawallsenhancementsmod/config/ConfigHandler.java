@@ -465,7 +465,7 @@ public class ConfigHandler extends AbstractConfig {
             category = NOCHEATERS,
             name = "Show Warning Icons",
             comment = "Display warning icon on names of reported players")
-    public static boolean warningIconsOnNames = true;
+    public static boolean warningIconsOnNames = false;
 
     @ConfigProperty(
             category = NOCHEATERS,
@@ -557,7 +557,7 @@ public class ConfigHandler extends AbstractConfig {
             category = HACKERDETECTOR,
             name = "Compact alerts",
             comment = "Compact flag messages with previous ones")
-    public static boolean compactFlagMessages = true;
+    public static boolean compactFlagMessages = false;
 
     @ConfigProperty(
             category = HACKERDETECTOR,

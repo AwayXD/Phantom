@@ -27,7 +27,7 @@ public class CommandNocheaters extends MyAbstractCommand {
 
     @Override
     public String getCommandName() {
-        return "nocheaters";
+        return "list";
     }
 
     @Override
@@ -70,7 +70,7 @@ public class CommandNocheaters extends MyAbstractCommand {
     protected void printCommandHelp() {
         ChatUtil.addChatMessage(
                 EnumChatFormatting.RED + ChatUtil.bar() + "\n"
-                        + ChatUtil.centerLine(EnumChatFormatting.GOLD + "NoCheaters Help\n\n")
+                        + ChatUtil.centerLine(EnumChatFormatting.DARK_PURPLE + "Phantom Help\n\n")
                         + EnumChatFormatting.YELLOW + getCommandUsage(null) + EnumChatFormatting.GRAY + " - " + EnumChatFormatting.AQUA + "prints the list of reported players in your current world\n"
                         + EnumChatFormatting.YELLOW + getCommandUsage(null) + " reportlist" + EnumChatFormatting.GRAY + " - " + EnumChatFormatting.AQUA + "prints the list of reported players\n"
                         + EnumChatFormatting.RED + ChatUtil.bar()
