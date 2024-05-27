@@ -10,11 +10,11 @@ public class SkinChatHead {
         this.skin = skin;
     }
 
-    public ResourceLocation getSkin() {
+    public ResourceLocation getSkine() {
         return skin;
     }
 
-    public void setSkin(ResourceLocation skin) {
+    public void setSkine(ResourceLocation skin) {
         this.skin = skin;
     }
 

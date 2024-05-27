@@ -77,12 +77,12 @@ public class ChatUtil {
             final SkinChatHead skin = new SkinChatHead(netInfo.getLocationSkin());
             ((ChatComponentTextAccessor) msg).setSkinChatHead(skin);
             ((NetworkPlayerInfoAccessor_ChatHeads) netInfo).setSkinChatHead(skin);
-            return true;
+            return false;
         } else {
             final ResourceLocation resourceLocation = NetHandlerPlayClientHook.getPlayerSkin(playername);
             if (resourceLocation != null) {
                 ((ChatComponentTextAccessor) msg).setSkinChatHead(new SkinChatHead(resourceLocation));
-                return true;
+                return false;
             }
         }
         return false;
@@ -338,5 +338,4 @@ public class ChatUtil {
     public static void debug(String msg) {
         addChatMessage(AQUA + "[Debug]: " + RESET + msg);
     }
-
 }
