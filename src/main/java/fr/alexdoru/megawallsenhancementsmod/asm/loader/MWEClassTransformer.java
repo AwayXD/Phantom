@@ -74,7 +74,6 @@ public class MWEClassTransformer implements IClassTransformer {
         registerTransformer(new LayerArmorBaseTransformer_HitColor());
         registerTransformer(new LayerArrowTransformer());
         registerTransformer(new MinecraftTransformer_DebugMessages());
-        registerTransformer(new MinecraftTransformer_DropProtection());
         registerTransformer(new MinecraftTransformer_WarpProtection());
         //registerTransformer(new NetHandlerPlayClientTransformer_BlockBreakAnimListener());
         registerTransformer(new NetHandlerPlayClientTransformer_BlockChangeListener());
