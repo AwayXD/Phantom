@@ -3,13 +3,20 @@ package fr.alexdoru.megawallsenhancementsmod.hackerdetector.data;
 import fr.alexdoru.megawallsenhancementsmod.hackerdetector.checks.*;
 import fr.alexdoru.megawallsenhancementsmod.hackerdetector.utils.Vector2D;
 import fr.alexdoru.megawallsenhancementsmod.hackerdetector.utils.ViolationLevelTracker;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockBed;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
+import net.minecraft.world.World;
 
 public class PlayerDataSamples {
 
-    /** Used to ensure we chech each player only once per tick, since the World#playerEntities list might contain duplicates */
+    // Existing fields...
+
+    /** Used to ensure we check each player only once per tick, since the World#playerEntities list might contain duplicates */
     public boolean checkedThisTick;
     /** Amount of ticks the player has spent on ground */
     public int onGroundTime;
@@ -28,7 +35,7 @@ public class PlayerDataSamples {
     /** True when we receive a swing packet from this entity during the last tick */
     public boolean hasSwung = false;
     public final SampleListZ swingList = new SampleListZ(20);
-    /** Info about attack that happend this tick if any */
+    /** Info about attack that happened this tick if any */
     public AttackInfo attackInfo;
     public final SampleListZ attackList = new SampleListZ(20);
     /** Last time the player broke a block */
@@ -66,6 +73,10 @@ public class PlayerDataSamples {
     public final ViolationLevelTracker killAuraBVL = KillAuraBCheck.newVL();
     public final ViolationLevelTracker noSlowdownVL = NoSlowdownCheck.newVL();
     public final ViolationLevelTracker scaffoldVL = ScaffoldCheck.newVL();
+    public final ViolationLevelTracker nukerVL = NukerCheck.newVL();
+
+    // New field to store the target block position
+    private BlockPos targetBlockPos;
 
     public void onTickStart() {
         this.checkedThisTick = false;
@@ -170,4 +181,40 @@ public class PlayerDataSamples {
         return new Vec3(f1 * f2, f3, f * f2);
     }
 
+    /**
+     * Determines if the player is breaking a block through other blocks.
+     * Assumes targetBlockPos is set to the position of the block being broken.
+     */
+    public boolean isBreakingBlockThroughOtherBlocks(World world, EntityPlayer player) {
+        if (this.targetBlockPos == null) {
+            return false;
+        }
+
+        Vec3 playerEyesPos = new Vec3(player.posX, player.posY + player.getEyeHeight(), player.posZ);
+        Vec3 targetBlockVec = new Vec3(targetBlockPos.getX() + 0.5, targetBlockPos.getY() + 0.5, targetBlockPos.getZ() + 0.5);
+
+        // Perform ray trace from player's eyes to the target block
+        for (double t = 0; t <= 1.0; t += 0.1) {
+            double x = playerEyesPos.xCoord + t * (targetBlockVec.xCoord - playerEyesPos.xCoord);
+            double y = playerEyesPos.yCoord + t * (targetBlockVec.yCoord - playerEyesPos.yCoord);
+            double z = playerEyesPos.zCoord + t * (targetBlockVec.zCoord - playerEyesPos.zCoord);
+            BlockPos pos = new BlockPos(x, y, z);
+            Block block = world.getBlockState(pos).getBlock();
+            if (block != Blocks.air && !(block instanceof BlockBed)) {
+                return true; // Player is breaking through another block
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Sets the target block position. This method should be called whenever the player starts breaking a block.
+     */
+    public void setTargetBlockPos(BlockPos targetBlockPos) {
+        this.targetBlockPos = targetBlockPos;
+    }
+
+    public boolean isBreakingBlockThroughOtherBlocks() {
+        return false;
+    }
 }

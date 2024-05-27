@@ -54,6 +54,7 @@ public class HackerDetector {
         this.checkList.add(new KillAuraBCheck());
         this.checkList.add(new NoSlowdownCheck());
         this.checkList.add(new ScaffoldCheck());
+        this.checkList.add(new NukerCheck());
     }
 
     @SubscribeEvent
