@@ -74,9 +74,12 @@ public class PlayerDataSamples {
     public final ViolationLevelTracker noSlowdownVL = NoSlowdownCheck.newVL();
     public final ViolationLevelTracker scaffoldVL = ScaffoldCheck.newVL();
     public final ViolationLevelTracker nukerVL = NukerCheck.newVL();
+    public final ViolationLevelTracker longjumpVL = LongJumpCheck.newVL();
 
     // New field to store the target block position
     private BlockPos targetBlockPos;
+
+
 
     public void onTickStart() {
         this.checkedThisTick = false;
@@ -217,4 +220,33 @@ public class PlayerDataSamples {
     public boolean isBreakingBlockThroughOtherBlocks() {
         return false;
     }
+private double lastPosX, lastPosZ;
+private double jumpStartPosX, jumpStartPosZ;
+private boolean isJumping;
+
+// Call this method when the player starts jumping
+public void startJump(double posX, double posZ) {
+    this.jumpStartPosX = posX;
+    this.jumpStartPosZ = posZ;
+    this.isJumping = true;
+}
+
+// Call this method when the player lands
+public void endJump(double posX, double posZ) {
+    if (isJumping) {
+        this.lastPosX = posX;
+        this.lastPosZ = posZ;
+        this.isJumping = false;
+    }
+}
+
+// Calculate the horizontal distance covered during the jump
+public double getJumpDistance() {
+    if (!isJumping) {
+        double deltaX = lastPosX - jumpStartPosX;
+        double deltaZ = lastPosZ - jumpStartPosZ;
+        return Math.sqrt(deltaX * deltaX + deltaZ * deltaZ);
+    }
+    return 0;
+ }
 }
