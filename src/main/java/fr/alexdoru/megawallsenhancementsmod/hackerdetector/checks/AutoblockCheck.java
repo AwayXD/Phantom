@@ -35,7 +35,7 @@ public class AutoblockCheck extends Check {
             final ItemStack itemStack = player.getHeldItem();
             if (itemStack != null && itemStack.getItem() instanceof ItemSword) {
                 if (data.useItemTime > 5) {
-                    data.autoblockAVL.add(5);
+                    data.autoblockAVL.add(2);
                     if (ConfigHandler.debugLogging) {
                         this.log(player, data, data.autoblockAVL, " | useItemTime " + data.useItemTime);
                     }
@@ -49,7 +49,7 @@ public class AutoblockCheck extends Check {
     }
 
     public static ViolationLevelTracker newVL() {
-        return new ViolationLevelTracker(30);
+        return new ViolationLevelTracker(1);
     }
 
 }

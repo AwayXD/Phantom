@@ -171,7 +171,6 @@ public class NameUtil {
      * the warning message if player was reported and is currently joining the world
      */
     public static void updateEntityPlayerFields(EntityPlayer player, boolean onPlayerJoin) {
-
         final MWPlayerData.PlayerData mwPlayerData = MWPlayerData.get(player.getUniqueID());
         if (mwPlayerData == null) {
             return;
@@ -194,17 +193,8 @@ public class NameUtil {
 
         player.getPrefixes().removeAll(ALL_ICONS_LIST);
 
-        if (mwPlayerData.extraPrefix != null) {
-            if (mwPlayerData.extraPrefix == ISQUAD_ICON) {
-                if (!ConfigHandler.squadIconTabOnly) {
-                    player.addPrefix(mwPlayerData.extraPrefix);
-                }
-            } else {
-                if (!ConfigHandler.warningIconsTabOnly) {
-                    player.addPrefix(mwPlayerData.extraPrefix);
-                }
-            }
-        }
+        // Remove the warning icon prefix
+        mwPlayerData.extraPrefix = null;
 
         if (onPlayerJoin && mwPlayerData.wdr != null) {
             final String playerName = player.getName();
@@ -221,8 +211,8 @@ public class NameUtil {
                 }
             }
         }
-
     }
+
 
     public static void clearWarningMessagesPrinted() {
         warningMsgPrinted.clear();
