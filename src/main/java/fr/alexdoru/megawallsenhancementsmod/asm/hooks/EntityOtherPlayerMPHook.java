@@ -3,6 +3,7 @@ package fr.alexdoru.megawallsenhancementsmod.asm.hooks;
 import fr.alexdoru.megawallsenhancementsmod.asm.accessors.EntityPlayerAccessor;
 import fr.alexdoru.megawallsenhancementsmod.config.ConfigHandler;
 import fr.alexdoru.megawallsenhancementsmod.hackerdetector.HackerDetector;
+import fr.alexdoru.megawallsenhancementsmod.features.LeatherArmorManager;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
@@ -19,7 +20,9 @@ public class EntityOtherPlayerMPHook {
             );
         }
     }
-
+    public static ItemStack getLeatherArmor(EntityOtherPlayerMP player, int slotIn, ItemStack stack) {
+        return LeatherArmorManager.replaceIronArmor(player, slotIn, stack);
+    }
     public static boolean shouldCancelEquipmentUpdate(EntityOtherPlayerMP player, int slotIn, ItemStack stack) {
         if (slotIn == 0) {
             final ItemStack currentStack = player.inventory.mainInventory[player.inventory.currentItem];

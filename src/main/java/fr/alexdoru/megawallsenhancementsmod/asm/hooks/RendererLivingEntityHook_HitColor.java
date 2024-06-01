@@ -10,24 +10,22 @@ public class RendererLivingEntityHook_HitColor {
     private static int hitColor;
 
     public static float getRed(float r, EntityLivingBase entity) {
-        if (ConfigHandler.useTeamColorWhenHurt && entity instanceof EntityPlayerAccessor) {
-            hitColor = ((EntityPlayerAccessor) entity).getPlayerTeamColorInt();
-        } else {
-            hitColor = ConfigHandler.hitColor;
-        }
-        return (float) (hitColor >> 16 & 0xFF) / 255.0F;
+        // Return default value
+        return r;
     }
 
     public static float getGreen(float g) {
-        return (float) (hitColor >> 8 & 0x00) / 255.0F;
+        // Return default value
+        return g;
     }
 
     public static float getBlue(float b) {
-        return (float) (hitColor & 0x00) / 255.0F;
+        // Return default value
+        return b;
     }
 
     public static float getAlpha(float a) {
-        return (float) (ConfigHandler.hitColor >> 24 & 0x00) / 255.0F;
+        // Return default value
+        return a;
     }
-
 }

@@ -231,7 +231,7 @@ public class ConfigHandler extends AbstractConfig {
             category = MWENHANCEMENTS,
             name = "Color when an entity gets hurt",
             comment = "Color when an entity gets hurt")
-    public static int hitColor = 0x00000000;
+    public static int hitColor = 0x4CFF0000;
 
     @ConfigProperty(
             category = MWENHANCEMENTS,
