@@ -4,7 +4,6 @@ import fr.alexdoru.megawallsenhancementsmod.api.apikey.HypixelApiKeyUtil;
 import fr.alexdoru.megawallsenhancementsmod.asm.loader.ASMLoadingPlugin;
 import fr.alexdoru.megawallsenhancementsmod.chat.ChatUtil;
 import fr.alexdoru.megawallsenhancementsmod.config.ConfigHandler;
-import fr.alexdoru.megawallsenhancementsmod.features.LeatherArmorManager;
 import fr.alexdoru.megawallsenhancementsmod.gui.elements.FancyGuiButton;
 import fr.alexdoru.megawallsenhancementsmod.gui.elements.OptionGuiButton;
 import fr.alexdoru.megawallsenhancementsmod.gui.elements.SimpleGuiButton;
@@ -126,22 +125,6 @@ public class MegaWallsEnhancementsConfigGuiScreen extends MyGuiScreen {
                 (b) -> ConfigHandler.strengthParticules = b,
                 () -> ConfigHandler.strengthParticules,
                 GRAY + "Spawns angry villager particles when an herobrine or dreadlord gets strength from a final kill"));
-        this.buttonList.add(new FancyGuiButton(
-                xPosLeft, getButtonYPos(6),
-                () -> "Colored Leather Armor : " + getSuffix(ConfigHandler.coloredLeatherArmor),
-                () -> {
-                    ConfigHandler.coloredLeatherArmor = !ConfigHandler.coloredLeatherArmor;
-                    LeatherArmorManager.onSettingChange();
-                },
-                GREEN + "Colored Leather Armor",
-                GRAY + "Changes iron armor worn by other players to colored leather armor matching their team color in Mega Walls"));
-        this.buttonList.add(new OptionGuiButton(
-                xPosRight, getButtonYPos(1),
-                "Renegade arrow count",
-                (b) -> ConfigHandler.renegadeArrowCount = b,
-                () -> ConfigHandler.renegadeArrowCount,
-                GRAY + "Renders above player heads the amount of arrows pinned in each player when playing renegade",
-                YELLOW + "This can have a negative impact on performance, keep it off if you don't play Renegade"));
         this.buttonList.add(new OptionGuiButton(
                 xPosRight, getButtonYPos(2),
                 "Nick hider",

@@ -19,15 +19,15 @@ public class RendererLivingEntityHook_HitColor {
     }
 
     public static float getGreen(float g) {
-        return (float) (hitColor >> 8 & 0xFF) / 255.0F;
+        return (float) (hitColor >> 8 & 0x00) / 255.0F;
     }
 
     public static float getBlue(float b) {
-        return (float) (hitColor & 0xFF) / 255.0F;
+        return (float) (hitColor & 0x00) / 255.0F;
     }
 
     public static float getAlpha(float a) {
-        return (float) (ConfigHandler.hitColor >> 24 & 0xFF) / 255.0F;
+        return (float) (ConfigHandler.hitColor >> 24 & 0x00) / 255.0F;
     }
 
 }

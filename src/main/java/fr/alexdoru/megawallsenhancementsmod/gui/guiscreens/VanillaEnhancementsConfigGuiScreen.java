@@ -103,30 +103,6 @@ public class VanillaEnhancementsConfigGuiScreen extends MyGuiScreen implements G
                     GRAY + "Hides the hats added by Optifine during Halloween and Christmas",
                     DARK_RED + "Requires game restart to be fully effective"));
         }
-        this.buttonList.add(new FancyGuiButton(
-                xPosRight, getButtonYPos(1),
-                buttonWidth - 25, buttonsHeight,
-                () -> "Select custom hurt color",
-                () -> mc.displayGuiScreen(new ColorSelectionGuiScreen(this, ConfigHandler.hitColor, 0x4CFF0000, color -> ConfigHandler.hitColor = color)),
-                GREEN + "Custom hurt color",
-                GRAY + "Change the color entities take when they get hurt"));
-        this.elementList.add(new ColoredSquareElement(xPosRight + buttonWidth - 25 + 4, getButtonYPos(1), 20, () -> ConfigHandler.hitColor));
-        this.buttonList.add(new FancyGuiButton(
-                xPosRight, getButtonYPos(2),
-                buttonWidth / 2 - 2, buttonsHeight,
-                () -> "Color armor : " + (ConfigHandler.colorArmorWhenHurt ? GREEN + "On" : RED + "Off"),
-                () -> ConfigHandler.colorArmorWhenHurt = !ConfigHandler.colorArmorWhenHurt,
-                GREEN + "Color armor",
-                GRAY + "The armor will be colored as well when a player is hurt, like it does in 1.7.",
-                GRAY + "If you have a 1.7 Old animation mod (such as " + YELLOW + "Sk1er's 1.7 Old Animation mod" + GRAY + "), you might need to turn off their \"Red Armor\" setting for this one to take effect."));
-        this.buttonList.add(new FancyGuiButton(
-                xPosRight + buttonWidth / 2 + 2, getButtonYPos(2),
-                buttonWidth / 2 - 2, buttonsHeight,
-                () -> "Use team color : " + (ConfigHandler.useTeamColorWhenHurt ? GREEN + "On" : RED + "Off"),
-                () -> ConfigHandler.useTeamColorWhenHurt = !ConfigHandler.useTeamColorWhenHurt,
-                GREEN + "Use team color",
-                GRAY + "When hurt the players will take the color of their team, other entities will take the custom color defined above.",
-                YELLOW + "When this is enabled, it still uses the alpha level defined in the custom color."));
         final List<String> shortCoinsList = new ArrayList<>();
         shortCoinsList.add(GREEN + "Short coin messages");
         shortCoinsList.add("");

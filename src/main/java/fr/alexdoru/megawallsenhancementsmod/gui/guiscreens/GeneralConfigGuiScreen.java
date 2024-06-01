@@ -22,6 +22,7 @@ public class GeneralConfigGuiScreen extends MyGuiScreen {
         final int xPos = this.getxCenter() - buttonsWidth / 2;
         this.elementList.add(new TextElement(DARK_PURPLE + "Phantom Anticheat", getxCenter(), getButtonYPos(-1)).setSize(2).makeCentered());
         this.buttonList.add(new SimpleGuiButton(xPos, getButtonYPos(1), buttonsWidth, buttonsHeight, DARK_PURPLE + "Config", () -> mc.displayGuiScreen(new HackerDetectorConfigGuiScreen(this))));
+        this.buttonList.add(new SimpleGuiButton(xPos, getButtonYPos(2), buttonsWidth, buttonsHeight, DARK_PURPLE + "More Customizations", () -> mc.displayGuiScreen(new NoCheatersConfigGuiScreen(this))));
         this.buttonList.add(new SimpleGuiButton(xPos, getButtonYPos(9), buttonsWidth, buttonsHeight, "Done", () -> mc.displayGuiScreen(null)));
         if ("01/04".equals(new SimpleDateFormat("dd/MM").format(new Date().getTime()))) {
             this.buttonList.add(new OptionGuiButton(
