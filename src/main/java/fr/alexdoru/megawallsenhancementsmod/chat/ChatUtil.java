@@ -288,7 +288,7 @@ public class ChatUtil {
     }
 
     public static IChatComponent getReportButton(String playername, String cheatReport, ClickEvent.Action actionreport) {
-        return new ChatComponentText(DARK_GREEN + " [Report]")
+        return new ChatComponentText(DARK_RED + " [WDR]")
                 .setChatStyle(new ChatStyle()
                         .setChatClickEvent(new ClickEvent(actionreport, "/report " + playername + " " + cheatReport))
                         .setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
