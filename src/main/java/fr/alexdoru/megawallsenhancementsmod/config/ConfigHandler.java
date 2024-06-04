@@ -2,6 +2,7 @@ package fr.alexdoru.megawallsenhancementsmod.config;
 
 import fr.alexdoru.megawallsenhancementsmod.MegaWallsEnhancementsMod;
 import fr.alexdoru.megawallsenhancementsmod.gui.guiapi.GuiPosition;
+import jdk.nashorn.internal.runtime.regexp.joni.Config;
 
 public class ConfigHandler extends AbstractConfig {
 
@@ -11,7 +12,7 @@ public class ConfigHandler extends AbstractConfig {
     private static final String NOCHEATERS = "NoCheaters";
     private static final String HACKERDETECTOR = "HackerDetector";
     private static final String HITBOX = "Hitbox";
-
+    private static final String ItemNotifications = "Item Notifications";
     protected static void onModUpdate() {
         if (!modVersion.equals(MegaWallsEnhancementsMod.version)) {
             ConfigHandler.hackerDetector = true;
@@ -20,6 +21,7 @@ public class ConfigHandler extends AbstractConfig {
             ConfigHandler.showReportHUDonlyInChat = false;
             ConfigHandler.modVersion = MegaWallsEnhancementsMod.version;
             ConfigHandler.saveConfig();
+            ConfigHandler.showChainNotification = true;
         }
     }
 
@@ -40,6 +42,12 @@ public class ConfigHandler extends AbstractConfig {
             name = "Show FKCounter HUD",
             comment = "Displays the HUD of the final kill counter")
     public static boolean showfkcounterHUD = true;
+
+    @ConfigProperty(
+            category = ItemNotifications,
+            name = "Chainmail Armour",
+            comment = "the player may be sniping (bought chainmail armour).")
+    public static boolean showChainNotification = true;
 
     @ConfigProperty(
             category = FKCOUNTER,
@@ -546,7 +554,6 @@ public class ConfigHandler extends AbstractConfig {
             name = "Show flag messages",
             comment = "Prints a message in chat when a player flags")
     public static boolean showFlagMessages = true;
-
     @ConfigProperty(
             category = HACKERDETECTOR,
             name = "Show flag message type",
