@@ -4,7 +4,6 @@ import fr.alexdoru.megawallsenhancementsmod.asm.hooks.RenderPlayerHook_RenegadeA
 import fr.alexdoru.megawallsenhancementsmod.chat.ChatListener;
 import fr.alexdoru.megawallsenhancementsmod.commands.*;
 import fr.alexdoru.megawallsenhancementsmod.config.ConfigHandler;
-import fr.alexdoru.megawallsenhancementsmod.events.KeybindingListener;
 import fr.alexdoru.megawallsenhancementsmod.features.FinalKillCounter;
 import fr.alexdoru.megawallsenhancementsmod.features.LowHPIndicator;
 import fr.alexdoru.megawallsenhancementsmod.features.MegaWallsEndGameStats;
@@ -60,7 +59,6 @@ public class MegaWallsEnhancementsMod {
         MinecraftForge.EVENT_BUS.register(new FinalKillCounter());
         MinecraftForge.EVENT_BUS.register(new ScoreboardTracker());
         MinecraftForge.EVENT_BUS.register(new PlayerJoinListener());
-        MinecraftForge.EVENT_BUS.register(new KeybindingListener());
         MinecraftForge.EVENT_BUS.register(new MegaWallsEndGameStats());
         MinecraftForge.EVENT_BUS.register(new RenderPlayerHook_RenegadeArrowCount());
 
