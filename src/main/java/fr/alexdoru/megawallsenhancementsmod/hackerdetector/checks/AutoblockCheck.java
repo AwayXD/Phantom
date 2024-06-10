@@ -49,7 +49,7 @@ public class AutoblockCheck extends Check {
     }
 
     public static ViolationLevelTracker newVL() {
-        return new ViolationLevelTracker(1);
+        return new ViolationLevelTracker(3);
     }
 
 }

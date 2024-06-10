@@ -53,6 +53,8 @@ public class NoCheatersConfigGuiScreen extends MyGuiScreen implements GuiSlider.
                 },
                 iconsTooltip));
         this.buttonList.add(new SimpleGuiButton(getxCenter() - 150 / 2, getButtonYPos(9), 150, buttonsHeight, "Done", () -> mc.displayGuiScreen(this.parent)));
+        this.buttonList.add(new SimpleGuiButton(getxCenter() - 200 / 2, getButtonYPos(3), 200, buttonsHeight, WHITE + "Snake Game", () -> mc.displayGuiScreen(new SnakeGameScreen(this))));
+
     }
 
     @Override
