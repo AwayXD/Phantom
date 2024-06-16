@@ -10,6 +10,7 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:2.1-SNAPSHOT'
     }
 }
+
 apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = ""
@@ -26,32 +27,34 @@ minecraft {
     makeObfSourceJar = false
 }
 
-dependencies {}
 
 jar {
-    manifest.attributes(
-            "FMLCorePlugin": 'fr.alexdoru.megawallsenhancementsmod.asm.loader.ASMLoadingPlugin',
-            'FMLCorePluginContainsFMLMod': 'Yes, yes it does'
-    )
+    manifest {
+        attributes(
+                "FMLCorePlugin": 'fr.alexdoru.megawallsenhancementsmod.asm.loader.ASMLoadingPlugin',
+                'FMLCorePluginContainsFMLMod': 'Yes, yes it does'
+        )
+    }
 }
 
 processResources {
-    // this will ensure that this task is redone when the versions change.
+    // Ensure that this task is redone when the versions change
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
-    // replace stuff in mcmod.info, nothing else
+    // Replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-        // replace version and mcversion
+        // Replace version and mcversion
         expand 'version': project.version, 'mcversion': project.minecraft.version
     }
 
-    // copy everything else, thats not the mcmod.info
+    // Copy everything else that's not mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
 }
+
 // Configure the runClient task
 tasks.withType(JavaExec) {
     if (it.name == "runClient") {

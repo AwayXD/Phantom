@@ -21,6 +21,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
+import fr.alexdoru.megawallsenhancementsmod.updater.ModUpdater;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
@@ -36,7 +37,7 @@ public class MegaWallsEnhancementsMod {
 
     public static final String modid = "Phantom";
     public static final String modName = "Phantom Anticheat";
-    public static final String version = "1.0";
+    public static final String version = "1.6";
     public static final Logger logger = LogManager.getLogger(modName);
     public static File jarFile;
 
@@ -51,6 +52,7 @@ public class MegaWallsEnhancementsMod {
 
         MinecraftForge.EVENT_BUS.register(new WdrData());
         MinecraftForge.EVENT_BUS.register(new GuiManager());
+        MinecraftForge.EVENT_BUS.register(new ModUpdater());
         MinecraftForge.EVENT_BUS.register(new ReportQueue());
         MinecraftForge.EVENT_BUS.register(new ChatListener());
         MinecraftForge.EVENT_BUS.register(new SquadHandler());
