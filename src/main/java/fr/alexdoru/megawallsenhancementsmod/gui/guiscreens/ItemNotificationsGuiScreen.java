@@ -2,6 +2,7 @@ package fr.alexdoru.megawallsenhancementsmod.gui.guiscreens;
 
 import fr.alexdoru.megawallsenhancementsmod.config.ConfigHandler;
 import fr.alexdoru.megawallsenhancementsmod.gui.elements.OptionGuiButton;
+import fr.alexdoru.megawallsenhancementsmod.gui.elements.SimpleGuiButton;
 import fr.alexdoru.megawallsenhancementsmod.gui.elements.TextElement;
 import fr.alexdoru.megawallsenhancementsmod.gui.guiscreens.*;
 import net.minecraft.client.Minecraft;
@@ -38,6 +39,8 @@ public class ItemNotificationsGuiScreen extends MyGuiScreen {
                 (b) -> ConfigHandler.showChainNotification = b,
                 () -> ConfigHandler.showChainNotification,
                 GRAY + "the player may be sniping (bought chainmail armor)."));
+        this.buttonList.add(new SimpleGuiButton(getxCenter() - 150 / 2, getButtonYPos(11), 150, buttonsHeight, "Back", () -> mc.displayGuiScreen(this.parent)));
+
     }
 
     @SubscribeEvent

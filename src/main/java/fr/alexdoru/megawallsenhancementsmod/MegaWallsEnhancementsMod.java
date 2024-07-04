@@ -37,7 +37,7 @@ public class MegaWallsEnhancementsMod {
 
     public static final String modid = "Phantom";
     public static final String modName = "Phantom Anticheat";
-    public static final String version = "1.6";
+    public static final String version = "1.8";
     public static final Logger logger = LogManager.getLogger(modName);
     public static File jarFile;
 

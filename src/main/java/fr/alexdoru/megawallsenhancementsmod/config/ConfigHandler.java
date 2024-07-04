@@ -13,6 +13,7 @@ public class ConfigHandler extends AbstractConfig {
     private static final String HACKERDETECTOR = "HackerDetector";
     private static final String HITBOX = "Hitbox";
     private static final String ItemNotifications = "Item Notifications";
+    private static final String CAPE = "Cape"; // New category for cape settings
     protected static void onModUpdate() {
         if (!modVersion.equals(MegaWallsEnhancementsMod.version)) {
             ConfigHandler.hackerDetector = true;
@@ -698,4 +699,15 @@ public class ConfigHandler extends AbstractConfig {
             comment = "A custom color for the hitboxes")
     public static int hitboxColor = 0xFFFFFF;
 
+    @ConfigProperty(
+            category = CAPE,
+            name = "Enable Cape",
+            comment = "Enable or disable the cape feature")
+    public static boolean enableCape = true;
+
+    @ConfigProperty(
+            category = CAPE,
+            name = "Cape URL",
+            comment = "URL of the custom cape")
+    public static String capeURL = "https://example.com/cape.png";
 }
