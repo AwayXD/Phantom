@@ -6,6 +6,8 @@ import fr.alexdoru.megawallsenhancementsmod.hackerdetector.utils.ViolationLevelT
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.util.BlockPos;
+import net.minecraft.world.World;
 
 public class AutoblockCheck extends Check {
 
@@ -34,6 +36,11 @@ public class AutoblockCheck extends Check {
         if (data.hasSwung) {
             final ItemStack itemStack = player.getHeldItem();
             if (itemStack != null && itemStack.getItem() instanceof ItemSword) {
+                // breaking blocks exemption
+                if (isPlayerBreakingBlock(player)) {
+                    return false;
+                }
+
                 if (data.useItemTime > 5) {
                     data.autoblockAVL.add(2);
                     if (ConfigHandler.debugLogging) {
@@ -41,16 +48,20 @@ public class AutoblockCheck extends Check {
                     }
                     return true;
                 } else if (data.useItemTime == 0) {
-                    data.autoblockAVL.substract(2);
+                    data.autoblockAVL.substract(1);
                 }
             }
         }
         return false;
     }
 
-    public static ViolationLevelTracker newVL() {
-        return new ViolationLevelTracker(3);
+    private boolean isPlayerBreakingBlock(EntityPlayer player) {
+        World world = player.worldObj;
+        BlockPos pos = player.getPosition();
+        return player.isSwingInProgress && world.getBlockState(pos).getBlock().getBlockHardness(world, pos) > 0;
     }
 
+    public static ViolationLevelTracker newVL() {
+        return new ViolationLevelTracker(2);
+    }
 }
-
