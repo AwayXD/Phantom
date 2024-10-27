@@ -37,7 +37,7 @@ public class MegaWallsEnhancementsMod {
 
     public static final String modid = "Phantom";
     public static final String modName = "Phantom";
-    public static final String version = "1.9";
+    public static final String version = "2.0";
     public static final Logger logger = LogManager.getLogger(modName);
     public static File jarFile;
 
@@ -63,6 +63,9 @@ public class MegaWallsEnhancementsMod {
         MinecraftForge.EVENT_BUS.register(new PlayerJoinListener());
         MinecraftForge.EVENT_BUS.register(new MegaWallsEndGameStats());
         MinecraftForge.EVENT_BUS.register(new RenderPlayerHook_RenegadeArrowCount());
+        MinecraftForge.EVENT_BUS.register(new ChatCrashHandler());
+
+
 
 
         ClientCommandHandler.instance.registerCommand(new CommandWDR());
