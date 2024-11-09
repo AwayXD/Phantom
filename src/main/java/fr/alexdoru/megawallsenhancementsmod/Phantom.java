@@ -27,17 +27,17 @@ import org.apache.logging.log4j.Logger;
 import java.io.File;
 
 @Mod(
-        modid = MegaWallsEnhancementsMod.modid,
-        name = MegaWallsEnhancementsMod.modName,
-        version = MegaWallsEnhancementsMod.version,
+        modid = Phantom.modid,
+        name = Phantom.modName,
+        version = Phantom.version,
         acceptedMinecraftVersions = "[1.8.9]",
         clientSideOnly = true
 )
-public class MegaWallsEnhancementsMod {
+public class Phantom {
 
     public static final String modid = "Phantom";
     public static final String modName = "Phantom";
-    public static final String version = "2.0";
+    public static final String version = "2.1";
     public static final Logger logger = LogManager.getLogger(modName);
     public static File jarFile;
 
@@ -64,6 +64,9 @@ public class MegaWallsEnhancementsMod {
         MinecraftForge.EVENT_BUS.register(new MegaWallsEndGameStats());
         MinecraftForge.EVENT_BUS.register(new RenderPlayerHook_RenegadeArrowCount());
         MinecraftForge.EVENT_BUS.register(new ChatCrashHandler());
+        MinecraftForge.EVENT_BUS.register(new BotListener());
+        MinecraftForge.EVENT_BUS.register(new TickHandler());
+
 
 
 
